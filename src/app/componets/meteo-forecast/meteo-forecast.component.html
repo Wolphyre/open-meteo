@@ -1,0 +1,13 @@
+<h1>Il meteo di oggi</h1>
+
+<div *ngFor="let data of forecastArray" class="container">
+    <span>Data: {{data.date | date}}</span>
+    <span>Temperature: {{data.temperature}} °C</span>
+    <span>Humidity: {{data.humidity}}</span>
+    <span>Pressure: {{data.pressure}}</span>
+    <span>Rain: {{data.rain}}</span>
+    <span>Code: {{data.code}}</span>
+    <span>Cloud cover: {{data.cloudCover}}</span>
+    <span>Wind speed: {{data.windSpeed}}</span>
+    <span>Wind direction: {{data.windDirection}}</span>
+</div>
