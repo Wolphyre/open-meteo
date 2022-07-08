@@ -14,10 +14,11 @@ export class MeteoForecastComponent implements OnInit {
   constructor(public meteoServ: MeteoService) { }
 
   ngOnInit(): void {
-    this.meteoServ.getDatas().subscribe({
+    const lat = '0';
+    const lng = '0';
+    this.meteoServ.getMeteo(lat, lng).subscribe({
       next: (data) => this.forecastArray = (data),
-      error: (err) => console.log.apply(err)
-      
+      error: (err) => console.log(err)
     })
 
   }

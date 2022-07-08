@@ -1,0 +1,9 @@
+<div class="container">
+    <input type="text" [(ngModel)]="searchString">
+    <button (click)="getCity()">Search</button>
+    <div routerLink="/meteo{{city.latitude}}@{{city.longitude}}" *ngFor="let city of citiesArray" class="city-card">
+        <span>{{city.name}}</span>
+        <span>{{city.latitude}}</span>
+        <span>{{city.longitude}}</span>
+    </div>
+</div>

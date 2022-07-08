@@ -8,9 +8,16 @@ import { HourlyForecast } from 'src/app/model/daily-forecast';
 })
 export class MeteoService {
 
-  private readonly BASE_URL = 'https://api.open-meteo.com/v1/forecast?latitude=41.8955&longitude=12.4823&hourly=temperature_2m,relativehumidity_2m,pressure_msl,rain,weathercode,cloudcover,windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin'
+  private readonly BASE_URL = 'https://api.open-meteo.com/v1/forecast?hourly=temperature_2m,relativehumidity_2m,pressure_msl,rain,weathercode,cloudcover,windspeed_10m,winddirection_10m&timezone=Europe%2FBerlin'
 
   constructor(private http: HttpClient) { }
+
+  getMeteo(lat: string, lng: string){
+    const url = this.BASE_URL + '&latitude' + lat + '&longitude' + lng;
+    return this.http.get<HourlyForecast[]>(url).pipe(
+      map(data => this.parseMeteoData(data))
+    )
+}
 
   getDatas() {
     return this.http.get<HourlyForecast[]>(this.BASE_URL).pipe(
@@ -53,10 +60,14 @@ export class MeteoService {
       
     }
     return datasArray;
+    
+
+
 
     // return data.hourly.time.map((time:string, index:number)=> (
     //   return (data: time, temperature: data.hourly.temperature_2m(index))
     // )) 
   }
+
 
 }
