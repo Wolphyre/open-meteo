@@ -5,7 +5,7 @@ import { MeteoForecastComponent } from './componets/meteo-forecast/meteo-forecas
 
 const routes: Routes = [
   {path: 'search', component: CityComponent},
-  {path: 'meteo/:latlong', component: MeteoForecastComponent},
+  {path: 'meteo/:latlng', component: MeteoForecastComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'},
   {path: '**', redirectTo: '/search'}
 

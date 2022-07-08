@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { HourlyForecast } from 'src/app/model/daily-forecast';
+import { HourlyForecast } from 'src/app/componets/meteo-forecast/model/daily-forecast';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class MeteoService {
   constructor(private http: HttpClient) { }
 
   getMeteo(lat: string, lng: string){
-    const url = this.BASE_URL + '&latitude' + lat + '&longitude' + lng;
+    const url = this.BASE_URL + '&latitude=' + lat + '&longitude=' + lng;
     return this.http.get<HourlyForecast[]>(url).pipe(
       map(data => this.parseMeteoData(data))
     )

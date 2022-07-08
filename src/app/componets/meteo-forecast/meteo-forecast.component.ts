@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HourlyForecast } from 'src/app/model/daily-forecast';
+import { ActivatedRoute } from '@angular/router';
+import { HourlyForecast } from 'src/app/componets/meteo-forecast/model/daily-forecast';
 import { MeteoService } from 'src/app/services/meteo/meteo.service';
 
 @Component({
@@ -11,16 +12,21 @@ export class MeteoForecastComponent implements OnInit {
 
   forecastArray: HourlyForecast[] = []
 
-  constructor(public meteoServ: MeteoService) { }
+  constructor(public meteoServ: MeteoService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const lat = '0';
-    const lng = '0';
-    this.meteoServ.getMeteo(lat, lng).subscribe({
-      next: (data) => this.forecastArray = (data),
-      error: (err) => console.log(err)
-    })
+    if(this.route.snapshot.paramMap.get('latlng')){
+      const latlng = this.route.snapshot.paramMap.get('latlng');
+      const lat = latlng?.split('@')[0];
+      const lng = latlng?.split('@')[1];
+      this.meteoServ.getMeteo(lat!, lng!).subscribe({
+        next: (data) => this.forecastArray = (data),
+        error: (err) => console.log(err)
+      })
+  
+    }
 
+   
   }
 
 

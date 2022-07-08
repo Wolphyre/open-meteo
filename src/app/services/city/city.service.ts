@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { CityDatas } from 'src/app/model/city-datas';
+import { CityDatas } from 'src/app/componets/meteo-forecast/model/city-datas';
 
 @Injectable({
   providedIn: 'root'

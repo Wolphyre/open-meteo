@@ -1,5 +1,5 @@
 <h1>Il meteo di oggi</h1>
-<app-city></app-city>
+
 <div *ngFor="let data of forecastArray" class="container">
     <img src="{{data.code | codeIcon}}" alt="">
     <span>Data: {{data.date | date}}</span>
