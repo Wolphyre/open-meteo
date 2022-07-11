@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { HourlyForecast } from 'src/app/componets/meteo-forecast/model/daily-forecast';
 
